@@ -1,0 +1,33 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: Spec with Ruby ${{ matrix.ruby_version }}
+    strategy:
+      matrix:
+        ruby_version:
+          - "3.3.3"
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Update .ruby-version with matrix value
+        run: echo "${{ matrix.ruby_version }}" >| .ruby-version
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+          rubygems: latest
+
+      - name: Run tests
+        run: bundle exec rake

@@ -1,0 +1,36 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+  TargetRubyVersion: 3.0
+  Exclude:
+    - 'bai2_ruby.gemspec'
+
+Layout/LineLength:
+  Exclude:
+    - 'lib/bai2_ruby/writer.rb'
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
+
+Metrics/MethodLength:
+  Max: 15
+
+Metrics/ParameterLists:
+  Exclude:
+    - 'lib/bai2_ruby/structures/**/*.rb'
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
